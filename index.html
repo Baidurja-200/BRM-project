@@ -876,7 +876,14 @@
     const h = String(now.getHours()).padStart(2,'0');
     const m = String(now.getMinutes()).padStart(2,'0');
     const watchTime = document.querySelector('.watch-time');
+    const watchDate = document.querySelector('.watch-date');
     if (watchTime) watchTime.textContent = `${h}:${m}`;
+    if (watchDate) {
+      const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+      const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+      const dateText = `${days[now.getDay()]} · ${months[now.getMonth()]} ${String(now.getDate()).padStart(2, '0')} · ${now.getFullYear()}`;
+      watchDate.textContent = dateText;
+    }
   }
   updateClock();
   setInterval(updateClock, 30000);
